@@ -31,31 +31,34 @@ public class UserTests {
 	@Test(priority = 1)
 	public void testPostUser() {
 
-		Response responce = UserEndPoints.createUser(userPayload);
+		Response responce = UserEndPoints.createUser(this.userPayload);
 		responce.then().log().all();
 
 		Assert.assertEquals(responce.getStatusCode(), 200);
 	}
+	
+	@Test(priority = 2)
+	public void testGetUserByName() {
 
-	public void testGetUser() {
-
-		Response responce = UserEndPoints.getUser(userPayload.getUsername());
+		Response responce = UserEndPoints.getUser(this.userPayload.getUsername());
 		responce.then().log().all();
 
 		Assert.assertEquals(responce.getStatusCode(), 200);
 	}
+	
+	@Test(priority = 3)
+	public void testUpdateUserByName() {
 
-	public void testUpdateUser() {
-
-		Response responce = UserEndPoints.updateUser(userPayload.getUsername(), userPayload);
+		Response responce = UserEndPoints.updateUser(this.userPayload.getUsername(), this.userPayload);
 		responce.then().log().all();
 
 		Assert.assertEquals(responce.getStatusCode(), 200);
 	}
-
+	
+	@Test(priority = 4)
 	public void testDeleteUser() {
 
-		Response responce = UserEndPoints.deleteUser(userPayload.getUsername());
+		Response responce = UserEndPoints.deleteUser(this.userPayload.getUsername());
 		responce.then().log().all();
 
 		Assert.assertEquals(responce.getStatusCode(), 200);
